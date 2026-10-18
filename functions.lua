@@ -1,5 +1,5 @@
 -- Background loop that runs while travelling
-local running = true
+running = true
 
 task.spawn(function()
     while true do
@@ -22,7 +22,7 @@ inputConnection = UserInputService.InputBegan:Connect(function(input, gameProces
     end
 end)
 
-local function clickKey(key, delay)
+function clickKey(key, delay)
 	if delay == nil or delay < 0 then
 		delay = 0.05
 	end
@@ -31,7 +31,7 @@ local function clickKey(key, delay)
     SendInputService:SendKeyEvent(false, key, false, game)
 end
 
-local function getClosestModel(folder)
+function getClosestModel(folder)
     local closestModel = nil
     local shortestDistance = math.huge
 
@@ -56,7 +56,7 @@ end
 
 
 -- Function to travel to a point
-local function goToPoint(target)
+function goToPoint(target)
 
     while true do
         humanoid:MoveTo(target)
@@ -76,7 +76,7 @@ local function goToPoint(target)
     end
 end
 
-local function faceOre(ore_position)
+function faceOre(ore_position)
 	
     local target = Vector3.new(
         ore_position.X,
@@ -111,7 +111,7 @@ local angledDirection =
 
 end
 
-local function mineOre(ore)
+function mineOre(ore)
     local rockBase = ore:FindFirstChild("RockBase") or ore:FindFirstChild("RockBaseL") or ore:FindFirstChild("LimestoneOre")
     local pos = rockBase and rockBase.Position
 
@@ -137,11 +137,11 @@ local function mineOre(ore)
 	clickKey(pickaxeSlot)
 end
 
-local function pickUpDroppedOres()
+function pickUpDroppedOres()
 	clickKey(Enum.KeyCode.E, 1)
 end
 
-local function performActions(actions)
+function performActions(actions)
 	for _, obj in ipairs(actions) do
 		if obj.p then
             goToPoint(obj.p)
@@ -165,7 +165,7 @@ end
 
 
 
-local function reset()
+function reset()
     clickKey(Enum.KeyCode.Escape)
     task.wait(0.1)
     clickKey(Enum.KeyCode.R)
@@ -173,7 +173,7 @@ local function reset()
     clickKey(Enum.KeyCode.Return)
 end
 
-local function selectSpawnLocation(down)
+function selectSpawnLocation(down)
 	clickKey(Enum.KeyCode.BackSlash)
     task.wait(0.4)
     for i = 1, down do
@@ -196,7 +196,7 @@ local function selectSpawnLocation(down)
 
 end
 
-local function resetAndWaitForRespawn(spawnLocation)
+function resetAndWaitForRespawn(spawnLocation)
     local playerFolder = workspace.WORKSPACE_Entities.Players
 
     reset()
@@ -224,7 +224,7 @@ local function resetAndWaitForRespawn(spawnLocation)
     return true
 end
 
-local function goToStart(startPos, betweenPoints)
+function goToStart(startPos, betweenPoints)
     if not running then
         return false
     end
@@ -270,7 +270,7 @@ local function goToStart(startPos, betweenPoints)
     return goToPoint(startPos)
 end
 
-local function startMine(mine)
+function startMine(mine)
 	resetAndWaitForRespawn(mine.spawnButtonIndex)
     task.wait(1)
 	goToStart(mine.startPos, mine.betweenPoints)

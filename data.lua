@@ -1,4 +1,4 @@
-local copperMine = {
+copperMine = {
     spawnButtonIndex = 0
     startPos = Vector3.new(643, 37, -745),
     betweenPoints = {
@@ -67,7 +67,7 @@ local copperMine = {
     }
 }
 
-local limestoneMine = {
+limestoneMine = {
     spawnButtonIndex = 1
     startPos = Vector3.new(-1467, 122, 1757),
     betweenPoints = {

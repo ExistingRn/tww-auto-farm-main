@@ -1,27 +1,27 @@
-local UserInputService = game:GetService("UserInputService")
-local SendInputService = game:GetService("VirtualInputManager")
+UserInputService = game:GetService("UserInputService")
+SendInputService = game:GetService("VirtualInputManager")
 
-local camera = workspace.CurrentCamera
+camera = workspace.CurrentCamera
 
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
+Players = game:GetService("Players")
+player = Players.LocalPlayer
 
-local character = workspace.WORKSPACE_Entities.Players:WaitForChild(player.Name)
-local humanoid = character:WaitForChild("Humanoid")
-local rootPart = character:WaitForChild("HumanoidRootPart")
+character = workspace.WORKSPACE_Entities.Players:WaitForChild(player.Name)
+humanoid = character:WaitForChild("Humanoid")
+rootPart = character:WaitForChild("HumanoidRootPart")
 
-local pickaxeSlot = Enum.KeyCode.Four
+pickaxeSlot = Enum.KeyCode.Four
 
-local interruptionKeys = {
+interruptionKeys = {
     Enum.KeyCode.W,
     Enum.KeyCode.A,
     Enum.KeyCode.S,
     Enum.KeyCode.D
 }
 
-local interupted = false
+interupted = false
 
-local ores = {
+ores = {
     copper = game.Workspace.WORKSPACE_Interactables.Mining.OreDeposits.Copper,
     coal = game.Workspace.WORKSPACE_Interactables.Mining.OreDeposits.Coal,
     limestone = game.Workspace.WORKSPACE_Interactables.Mining.OreDeposits.Limestone
