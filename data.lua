@@ -1,5 +1,5 @@
 copperMine = {
-    spawnButtonIndex = 0
+    spawnButtonIndex = 0,
     startPos = Vector3.new(643, 37, -745),
     betweenPoints = {
         {p = Vector3.new(486, 38, -606)},
@@ -68,7 +68,7 @@ copperMine = {
 }
 
 limestoneMine = {
-    spawnButtonIndex = 1
+    spawnButtonIndex = 1,
     startPos = Vector3.new(-1467, 122, 1757),
     betweenPoints = {
         {p = Vector3.new(-1429, 122, 2037)},
