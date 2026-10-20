@@ -99,7 +99,7 @@ function faceOre(ore_position)
         lookDirection.Z
     ).Unit
 
-local angledDirection =
+    local angledDirection =
     CFrame.lookAt(Vector3.zero, horizontalDirection)
     * CFrame.Angles(-downwardAngle, -leftAngle, 0)
 
@@ -150,6 +150,8 @@ function performActions(actions)
         if obj.o then
         	local closestOre = getClosestModel(ores[string.lower(obj.o)])
         	mineOre(closestOre)
+            pickUpDroppedOres()
+            task.wait(0.2)
             pickUpDroppedOres()
         end
 
