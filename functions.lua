@@ -58,6 +58,10 @@ end
 -- Function to travel to a point
 function goToPoint(target)
 
+    -- face target position
+    local targetPosition = Vector3.new(target.X, rootPart.Position.Y, target.Z)
+    rootPart.CFrame = CFrame.lookAt(rootPart.Position, targetPosition)
+
     while true do
         humanoid:MoveTo(target)
 
