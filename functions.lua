@@ -66,16 +66,22 @@ function goToPoint(target)
     local direction = targetPosition - rootPart.Position
 
     if direction.Magnitude > 0.001 then
-        local horizontalDirection = direction.Unit
-
         rootPart.CFrame = CFrame.lookAt(
             rootPart.Position,
             targetPosition
         )
 
+        local downwardAngle = math.rad(10)
+
+        local horizontalDirection = direction.Unit
+
+        local angledDirection =
+            CFrame.lookAt(Vector3.zero, horizontalDirection)
+            * CFrame.Angles(-downwardAngle, 0, 0)
+
         camera.CFrame = CFrame.lookAt(
             camera.CFrame.Position,
-            camera.CFrame.Position + horizontalDirection
+            camera.CFrame.Position + angledDirection.LookVector
         )
     end
 
