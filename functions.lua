@@ -57,20 +57,33 @@ end
 
 -- Function to travel to a point
 function goToPoint(target)
-
-    -- face target position
-    local targetPosition = Vector3.new(target.X, rootPart.Position.Y, target.Z)
-    rootPart.CFrame = CFrame.lookAt(
-        rootPart.Position, 
-        targetPosition
+    local targetPosition = Vector3.new(
+        target.X,
+        rootPart.Position.Y,
+        target.Z
     )
 
-    camera.CFrame = CFrame.lookAt(
-        camera.CFrame.Position,
-        camera.CFrame.Position + (targetPosition - rootPart.Position).Unit
-    )
+    local direction = targetPosition - rootPart.Position
+
+    if direction.Magnitude > 0.001 then
+        local horizontalDirection = direction.Unit
+
+        rootPart.CFrame = CFrame.lookAt(
+            rootPart.Position,
+            targetPosition
+        )
+
+        camera.CFrame = CFrame.lookAt(
+            camera.CFrame.Position,
+            camera.CFrame.Position + horizontalDirection
+        )
+    end
 
     while true do
+        if not running then
+            return false
+        end
+
         humanoid:MoveTo(target)
 
         local reached = humanoid.MoveToFinished:Wait()
