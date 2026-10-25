@@ -65,6 +65,11 @@ function goToPoint(target)
         targetPosition
     )
 
+    camera.CFrame = CFrame.lookAt(
+        camera.CFrame.Position,
+        camera.CFrame.Position + (targetPosition - rootPart.Position).Unit
+    )
+
     while true do
         humanoid:MoveTo(target)
 
